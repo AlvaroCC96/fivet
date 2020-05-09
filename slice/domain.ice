@@ -26,16 +26,184 @@
 ["java:package:cl.ucn.disc.pdis.fivet.zeroice"]
 module model {
 
+
     /**
-     * The base system.
-     */
-     interface TheSystem {
+         * Clase Persona
+         */
+         class Persona{
+
+            /**
+             * Primary Key
+             */
+            int id;
+
+            /**
+             * Rut: 189725965
+             */
+            string rut;
+
+            /**
+             * Nombre
+             */
+            string nombre;
+
+            /**
+             * Direccion
+             */
+            string direccion;
+
+            /**
+             * Telefono fijo
+             */
+            long telefonoFijo;
+
+            /**
+             * Telefono movil
+             */
+            long telefonoMovil;
+
+            /**
+             * Correo electronico
+             */
+             string email;
+
+
+         }
+
+         /**
+          * La ficha
+          */
+         class Ficha {
+
+             /**
+              * Primary Key
+              */
+             int id;
+
+             /**
+              * Numero
+              */
+             int numeroFicha;
+
+             /*
+             * nombrePaciente
+             */
+             string nombrePaciente;
+
+             /**
+             * especie del animal
+             */
+             string especie;
+
+             /**
+             * fecha nacimiento:
+             * format: TODO
+             */
+             string fechaNacimiento;
+
+            /**
+            *raza del animal
+            */
+            string raza;
+
+            /**
+            *sexo del animal
+            */
+            string sexo;
+
+            /**
+            *color del animal
+            */
+            string color;
+
+            /**
+            *Tipo de paciente
+            */
+            string tipo;
+
+         }
+
+         /**
+         * Clase control
+         */
+         class Control {
+
+         /**
+         * fecha del contol
+         * format: TODO
+         */
+         string fechaControl;
+
+         /**
+          * fecha del contol proximo
+          * format: TODO
+          */
+          string fechaProximoControl;
+
+
+         /**
+         * temperatura del paciente en celcius
+         */
+         float temperatura;
+
+         /**
+          *peso del paciente en kg
+          */
+          float peso;
+
+          /**
+          *altura del paciente en cm
+          */
+          int altura;
+
+          /**
+          *diagnostico del paciente
+          */
+          string diagnostico;
+
+          /**
+          * nombre del veterinario encargado
+          */
+          string nombreVeterinario;
+        }
 
         /**
-         * @return the diference in time between client and server.
-         */
-        long getDelay(long clientTime);
+        * La foto de la ficha
+        */
+        class Foto{
+            /*
+            *url o nombre del archivo de la foto
+            */
+            string urlFoto;
+        }
 
-     }
+        /**
+        * Examen asociado a un control
+        */
+        class Examen{
+
+            /**
+            *nombre del examen
+            */
+            string nombreExamen;
+
+            /*
+            *fecha en que fue tomada el examen
+            *format: TODO
+            */
+            string fechaExamen;
+        }
+
+        /**
+         * The base system.
+         */
+         interface TheSystem {
+
+            /**
+             * @return the diference in time between client and server.
+             */
+            long getDelay(long clientTime);
+
+         }
 
 }

@@ -55,8 +55,8 @@ public class ExamenTest {
         final Examen examen = new Examen(id,nombreExamen,fechaExamen);
 
         // Testing
-        Assertions.assertNotNull(examenVacio);
-        Assertions.assertNotNull(examen);
+        Assertions.assertNotNull(examenVacio,"Object not null");
+        Assertions.assertNotNull(examen,"Object not null");
         log.debug("Done.");
 
     }

@@ -55,8 +55,8 @@ public class FotoTest {
         final Foto foto = new Foto(id,urlFoto);
 
         // Testing
-        Assertions.assertNotNull(fotoVacia);
-        Assertions.assertNotNull(foto);
+        Assertions.assertNotNull(fotoVacia,"Object not null");
+        Assertions.assertNotNull(foto,"Object not null");
         Assertions.assertEquals(foto.urlFoto,urlFoto);
         log.debug("Done.");
 

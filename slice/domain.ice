@@ -26,200 +26,225 @@
 ["java:package:cl.ucn.disc.pdis.fivet.zeroice"]
 module model {
 
-
     /**
-         * Clase Persona
+     * Clase Persona
+     */
+     class Persona{
+
+        /**
+         * Primary Key
          */
-         class Persona{
+        int id;
 
-            /**
-             * Primary Key
-             */
-            int id;
+        /**
+         * Rut: 189725965
+         */
+        string rut;
 
-            /**
-             * Rut: 189725965
-             */
-            string rut;
+        /**
+         * Nombre
+         */
+        string nombre;
 
-            /**
-             * Nombre
-             */
-            string nombre;
+        /**
+         * Direccion
+         */
+        string direccion;
 
-            /**
-             * Direccion
-             */
-            string direccion;
+        /**
+         * Telefono fijo
+         */
+        long telefonoFijo;
 
-            /**
-             * Telefono fijo
-             */
-            long telefonoFijo;
+        /**
+         * Telefono movil
+         */
+        long telefonoMovil;
 
-            /**
-             * Telefono movil
-             */
-            long telefonoMovil;
-
-            /**
-             * Correo electronico
-             */
-             string email;
+        /**
+         * Correo electronico
+         */
+         string email;
 
 
-         }
+     }
+
+     /**
+      *Tipo de paciente
+      */
+      enum TipoPaciente{
+         EXTERNO,INTERNO
+      }
+
+      /**
+      *sexo del animal
+      */
+      enum Sexo{
+         MACHO,HEMBRA
+      }
+     /**
+      * La ficha
+      */
+     class Ficha {
 
          /**
-          * La ficha
+          * Primary Key
           */
-         class Ficha {
-
-             /**
-              * Primary Key
-              */
-             int id;
-
-             /**
-              * Numero
-              */
-             int numeroFicha;
-
-             /*
-             * nombrePaciente
-             */
-             string nombrePaciente;
-
-             /**
-             * especie del animal
-             */
-             string especie;
-
-             /**
-             * fecha nacimiento:
-             * format: TODO
-             */
-             string fechaNacimiento;
-
-            /**
-            *raza del animal
-            */
-            string raza;
-
-            /**
-            *sexo del animal
-            */
-            string sexo;
-
-            /**
-            *color del animal
-            */
-            string color;
-
-            /**
-            *Tipo de paciente
-            */
-            string tipo;
-
-         }
-
-         /**
-         * Clase control
-         */
-         class Control {
-
-         /**
-         * id del examen
-         */
          int id;
 
          /**
-         * fecha del contol
+          * Numero
+          */
+         int numeroFicha;
+
+         /*
+         * nombrePaciente
+         */
+         string nombrePaciente;
+
+         /**
+         * especie del animal
+         */
+         string especie;
+
+         /**
+         * fecha nacimiento:
          * format: TODO
          */
-         string fechaControl;
-
-         /**
-          * fecha del contol proximo
-          * format: TODO
-          */
-          string fechaProximoControl;
-
-
-         /**
-         * temperatura del paciente en celcius
-         */
-         float temperatura;
-
-         /**
-          *peso del paciente en kg
-          */
-          float peso;
-
-          /**
-          *altura del paciente en cm
-          */
-          int altura;
-
-          /**
-          *diagnostico del paciente
-          */
-          string diagnostico;
-
-          /**
-          * nombre del veterinario encargado
-          */
-          string nombreVeterinario;
-        }
+         string fechaNacimiento;
 
         /**
-        * La foto de la ficha
+        *raza del animal
         */
-        class Foto{
+        string raza;
 
-            /**
-            * id del examen
-            */
-            int id;
-
-            /*
-            *url o nombre del archivo de la foto
-            */
-            string urlFoto;
-        }
+        Sexo sexo;
 
         /**
-        * Examen asociado a un control
+        *color del animal
         */
-        class Examen{
+        string color;
 
-            /**
-            * id del examen
-            */
-            int id;
+        TipoPaciente tipoPaciente;
 
-            /**
-            *nombre del examen
-            */
-            string nombreExamen;
+     }
 
-            /*
-            *fecha en que fue tomada el examen
-            *format: TODO
-            */
-            string fechaExamen;
-        }
+
+
+     /**
+     * Clase control
+     */
+     class Control {
+
+     /**
+     * id del examen
+     */
+     int id;
+
+     /**
+     * fecha del contol
+     * format: TODO
+     */
+     string fechaControl;
+
+     /**
+      * fecha del contol proximo
+      * format: TODO
+      */
+      string fechaProximoControl;
+
+
+     /**
+     * temperatura del paciente en celcius
+     */
+     float temperatura;
+
+     /**
+      *peso del paciente en kg
+      */
+      float peso;
+
+      /**
+      *altura del paciente en cm
+      */
+      int altura;
+
+      /**
+      *diagnostico del paciente
+      */
+      string diagnostico;
+
+      /**
+      * nombre del veterinario encargado
+      */
+      string nombreVeterinario;
+    }
+
+    /**
+    * La foto de la ficha
+    */
+    class Foto{
 
         /**
-         * The base system.
+        * id del examen
+        */
+        int id;
+
+        /*
+        *url o nombre del archivo de la foto
+        */
+        string urlFoto;
+    }
+
+    /**
+    * Examen asociado a un control
+    */
+    class Examen{
+
+        /**
+        * id del examen
+        */
+        int id;
+
+        /**
+        *nombre del examen
+        */
+        string nombreExamen;
+
+        /*
+        *fecha en que fue tomada el examen
+        *format: TODO
+        */
+        string fechaExamen;
+    }
+
+    /**
+     * The base system.
+     */
+     interface TheSystem {
+
+        /**
+         * @return the diference in time between client and server.
          */
-         interface TheSystem {
+        long getDelay(long clientTime);
 
-            /**
-             * @return the diference in time between client and server.
-             */
-            long getDelay(long clientTime);
+     }
+     /**
+     * interface 
+     */
+     interface Contratos {
+        /**
+        * return Ficha associated a number(id)
+        * @param number(id)
+        * @return Ficha
+        */
+        Ficha obtenerFicha(int numero);
 
-         }
+        Ficha registarFicha (Ficha ficha);
+        Persona registarPersona (Persona persona);
+        Control registarControl (Control control);
+        bool agregarFoto (Foto foto);
+
+     }
 
 }

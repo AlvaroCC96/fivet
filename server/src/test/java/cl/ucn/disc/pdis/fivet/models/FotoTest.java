@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Diego Urrutia-Astorga <durrutia@ucn.cl>.
+ * Copyright (c) 2020 Álvaro Lucas Castillo Calabacero <alvarolucascc96@gmail.com>.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Alvaro
+ */
 public class FotoTest {
 
     /**
@@ -58,6 +61,8 @@ public class FotoTest {
         Assertions.assertNotNull(fotoVacia,"Object not null");
         Assertions.assertNotNull(foto,"Object not null");
         Assertions.assertEquals(foto.urlFoto,urlFoto);
+        //validation , ice no use a value null
+        //Assertions.assertThrows(NullPointerException.class,()-> new Foto(id,null));
         log.debug("Done.");
 
     }

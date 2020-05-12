@@ -129,6 +129,11 @@ module model {
          class Control {
 
          /**
+         * id del examen
+         */
+         int id;
+
+         /**
          * fecha del contol
          * format: TODO
          */
@@ -171,6 +176,12 @@ module model {
         * La foto de la ficha
         */
         class Foto{
+
+            /**
+            * id del examen
+            */
+            int id;
+
             /*
             *url o nombre del archivo de la foto
             */
@@ -181,6 +192,11 @@ module model {
         * Examen asociado a un control
         */
         class Examen{
+
+            /**
+            * id del examen
+            */
+            int id;
 
             /**
             *nombre del examen

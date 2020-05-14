@@ -39,23 +39,23 @@ public interface Repository<T,K> {
      * Delete a registry from table inde database.
      * @param id
      */
-    boolean eliminar(K id);
+    boolean eliminar(K id) throws SQLException;
 
     /**
      * Update registry T.
      * @param element
      */
-    boolean actualizar(T element);
+    boolean actualizar(T element) throws SQLException;
 
     /**
      * Find a registry in database.
      * @param id that has to be found.
      */
-    T buscar(K id);
+    T buscar(K id) throws SQLException;
 
     /**
      * Get all registrys from Table T.
      */
-    List<T> obtenerTodos();
+    List<T> obtenerTodos() throws SQLException;
 
 }

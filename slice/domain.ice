@@ -47,6 +47,11 @@ module model {
         string nombre;
 
         /**
+        * The Apellido
+        */
+        string apellido;
+
+        /**
          * Direccion
          */
         string direccion;
@@ -54,18 +59,17 @@ module model {
         /**
          * Telefono fijo
          */
-        long telefonoFijo;
+         long telefonoFijo;
 
         /**
          * Telefono movil
          */
-        long telefonoMovil;
+         long telefonoMovil;
 
         /**
          * Correo electronico
          */
          string email;
-
 
      }
 
@@ -244,7 +248,6 @@ module model {
         Persona registarPersona (Persona persona);
         Control registarControl (Control control);
         bool agregarFoto (Foto foto);
-
      }
 
 }

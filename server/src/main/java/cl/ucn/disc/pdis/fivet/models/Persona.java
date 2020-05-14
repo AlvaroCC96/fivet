@@ -24,48 +24,78 @@
 
 package cl.ucn.disc.pdis.fivet.models;
 
-import cl.ucn.disc.pdis.fivet.zeroice.model.Control;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * @author Alvaro
  */
-public class ControlTest {
+
+@DatabaseTable(tableName = "persona")
+public class Persona {
+    /**
+     *The Id, pk for datatable in db
+     */
+    @DatabaseField(generatedId = true)
+    private Long id;
+    /**
+     * The Nombre
+     */
+    @DatabaseField(canBeNull = false)
+    private String nombre;
 
     /**
-     * The Logger.
+     * The Apellido
      */
-    private static final Logger log = LoggerFactory.getLogger(ExamenTest.class);
+    @DatabaseField(canBeNull = false)
+    private String apellido;
 
     /**
-     * The Test of Constructor.
+     * The rut
      */
-    @Test
-    public void testConstructor() {
+    @DatabaseField(canBeNull = false,index = true)
+    private String rut;
 
-        log.debug("Testing the Constructor ..");
-
-        // The values
-        final int id=1;
-        final String fechaControl = "fecha1";
-        final String fechaProximoControl = "fecha2";
-        final float temperatura =  1.3f;
-        final float peso =  1.5f;
-        final int altura = 145;
-        final String diagnostico ="muy malito :(";
-        final String nombreVeterinario = "Doc1";
-
-        // The Constructor
-        final Control controlVacio = new Control();
-        final Control control = new Control(id,fechaProximoControl,fechaProximoControl,temperatura,peso,altura,
-                                            diagnostico,nombreVeterinario);
-        // Testing
-        Assertions.assertNotNull(controlVacio,"Object not null");
-        Assertions.assertNotNull(control,"Object not null");
-        log.debug("Done.");
-
+    /**
+     * Empty Constructor, for test
+     */
+    Persona(){
+        //nothing here.
     }
+
+    /**
+     * Constructor
+     * @param nombre
+     * @param apellido
+     * @param rut
+     */
+    public Persona(String nombre, String apellido, String rut) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rut = rut;
+    }
+
+    /**
+     * get ID
+     * @return id
+     */
+    public Long getId() { return id; }
+
+    /**
+     * get Nombre
+     * @return nombre
+     */
+    public String getNombre() { return nombre; }
+
+    /**
+     * get Apellido
+     * @return apellido
+     */
+    public String getApellido() { return apellido; }
+
+    /**
+     * get Rut
+     * @return rut
+     */
+    public String getRut() { return rut; }
 }

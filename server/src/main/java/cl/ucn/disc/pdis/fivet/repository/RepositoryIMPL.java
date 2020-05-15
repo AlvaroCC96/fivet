@@ -24,9 +24,12 @@
 
 package cl.ucn.disc.pdis.fivet.repository;
 
+import cl.ucn.disc.pdis.fivet.models.Persona;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -45,6 +48,8 @@ public class RepositoryIMPL<T,K> implements Repository<T,K> {
      */
     public RepositoryIMPL(ConnectionSource connectionSource, Class<T> theClass) throws SQLException {
         try {
+            //Create the table from Persona Class Annotations
+            TableUtils.createTableIfNotExists(connectionSource, theClass);
             dao = DaoManager.createDao(connectionSource, theClass);
         } catch (SQLException e) { throw new RuntimeException(e); }
     }
@@ -119,6 +124,16 @@ public class RepositoryIMPL<T,K> implements Repository<T,K> {
     public List<T> obtenerTodos() throws SQLException {
         try {
             List<T> list = dao.queryForAll();
+            return list;
+        } catch ( SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
+    @Override
+    public List<T> buscarParametro(String param, String value) throws SQLException {
+        try {
+            List<T> list = dao.queryForEq(param,value);
             return list;
         } catch ( SQLException e) {
             throw new SQLException(e);

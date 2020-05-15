@@ -58,4 +58,11 @@ public interface Repository<T,K> {
      */
     List<T> obtenerTodos() throws SQLException;
 
+    /**
+     * Get list by param from query
+     * @return
+     * @throws SQLException
+     */
+    List<T> buscarParametro(String param, String value) throws SQLException;
+
 }

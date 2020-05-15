@@ -31,10 +31,11 @@ import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 
 public class RepositorySingleton {
+
     /**
      * instance for Singleton Patron
      */
-    private RepositorySingleton instancia;
+    private static RepositorySingleton instancia;
 
     /**
      * Persona repository.
@@ -44,8 +45,9 @@ public class RepositorySingleton {
 
     private RepositorySingleton() throws SQLException {
         try {
-            ConnectionSource connectionSource = new JdbcConnectionSource("jdbc:h2:mem:fivet");
+            ConnectionSource connectionSource = new JdbcConnectionSource("jdbc:h2:mem:fivet_db");
             this.PersonaRepository = new RepositoryIMPL<Persona, Long>(connectionSource, Persona.class);
+
             //TODO: inicializated others repositories from other todo
 
         } catch (SQLException e) {
@@ -57,13 +59,18 @@ public class RepositorySingleton {
      * return a unique instance for Singleton Patron
      * @return instancia
      */
-    public RepositorySingleton getInstancia() throws SQLException {
+    public static RepositorySingleton getInstancia() throws SQLException {
         if (instancia == null ) {
             instancia = new RepositorySingleton();
         }
         return instancia;
     }
 
-
-
+    /**
+     * get Repository Persona
+     * @return RepositoryIMPL
+     */
+    public RepositoryIMPL<Persona, Long> getPersonaRepository() {
+        return PersonaRepository;
+    }
 }

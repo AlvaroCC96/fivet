@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Diego Urrutia-Astorga <durrutia@ucn.cl>.
+ * Copyright (c) 2020 Alvaro Lucas Castillo Calabacero <alvarolucascc96@gmail.com>.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,8 +61,12 @@ public final class SystemClient {
 
         try (Communicator communicator = Util.initialize(getInitializationData(args))) {
 
+            //Verificate the name of interface
+            String name = TheSystem.class.getSimpleName();
+            log.debug("Proxying <{}>", name);
+
             // Running in port 8080
-            ObjectPrx theProxy = communicator.stringToProxy(TheSystem.class.getName() + ":default -p 8080 -z");
+            ObjectPrx theProxy = communicator.stringToProxy(name + ":tcp -z -t 15000 -p 8080 ");
 
             TheSystemPrx theSystem = TheSystemPrx.checkedCast(theProxy);
 
@@ -71,11 +75,10 @@ public final class SystemClient {
             }
 
             long delay = theSystem.getDelay(System.currentTimeMillis());
-            log.debug("Delay: {}ms.", delay);
+            log.debug("Delay: {} ms.", delay);
 
             /*
             EnginePrx engine = EnginePrx.checkedCast(proxy);
-
             */
 
         }
@@ -91,6 +94,7 @@ public final class SystemClient {
 
         // Properties
         final Properties properties = Util.createProperties(args);
+
         properties.setProperty("Ice.Package.model", "cl.ucn.disc.pdis.fivet.zeroice");
 
         // https://doc.zeroc.com/ice/latest/property-reference/ice-trace
